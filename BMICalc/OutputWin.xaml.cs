@@ -49,7 +49,10 @@ namespace BMICalc
             }
             if (_bmi >= 100)
             {
-                txtAppeal.Text = "Номер похоронного бюро по Москве \n 8 (495) 997-00-73";
+                this.Width = 530;
+                this.Height = 400;
+                txtAppeal.Text = "Номер похоронного бюро по Москве: \n " +
+                    "                8 (495) 997-00-73";
             }
         }
 
