@@ -55,7 +55,7 @@ namespace BMICalc
                 OutputWin outputWin = new OutputWin(G, W);
                 this.Hide();
                 outputWin.ShowDialog();
-                this.Close();
+                this.Show();
             }
         }
 
@@ -99,6 +99,13 @@ namespace BMICalc
             {
                 boxWeight.Text = "0,00";
             }
+        }
+
+        private void btnMenu_Click(object sender, RoutedEventArgs e)
+        {
+            StartWin startWin = new StartWin();
+            this.Close();
+            startWin.ShowDialog();
         }
     }
 }

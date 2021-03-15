@@ -236,11 +236,19 @@
         <Button x:Name="btnCount"
                 Grid.Column="2"
                 Grid.Row="9"
-                Margin="10 10 10 10"
+                Margin="50 10 10 10"
                 Content="Расчёт"
                 Click="btnCount_Click"
             />
-        
-        
+
+        <Button x:Name="btnMenu"
+                Grid.Column="1"
+                Grid.Row="9"
+                Margin="10 10 100 10"
+                Content="Меню"
+                Click="btnMenu_Click"
+            />
+
+
     </Grid>
 </Window>

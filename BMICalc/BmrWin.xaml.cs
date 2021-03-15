@@ -208,7 +208,11 @@ namespace BMICalc
             }
         }
 
-
-
+        private void btnMenu_Click(object sender, RoutedEventArgs e)
+        {
+            StartWin startWin = new StartWin();
+            this.Close();
+            startWin.ShowDialog();
+        }
     }
 }
