@@ -19,99 +19,94 @@ namespace BMICalc
     /// </summary>
     public partial class BmrWin : Window
     {
-        private double _Weight;
-        private double _Age;
-        private double _Growth;
-        private double _Result;
-        private int _Gender;
-        private int _Joul = 0;
+        private double _weight;
+        private int _age;
+        private double _growth;
+        private double _result;
+        private int _gender;
+        private int _joul = 0;
+        private int _errorcount = 0;
 
         public BmrWin()
         {
             InitializeComponent();
         }
 
-        private void Calculation_Bmr()
+        private void CalculationBmr()
         {
-            _Age = Convert.ToDouble(boxAge.Text);
-            _Growth = Convert.ToDouble(boxGrowth.Text);
-            _Weight = Convert.ToDouble(boxWeight.Text);
+            _age = Convert.ToInt32(boxAge.Text);
+            _growth = Convert.ToDouble(boxGrowth.Text);
+            _weight = Convert.ToDouble(boxWeight.Text);
 
 
             if (rdbWeightFunt.IsChecked == true)
             {
-                _Weight = _Weight / 2.205;
+                _weight = _weight / 2.205;
             }
 
             if (rdbGenderMale.IsChecked == true)
             {
-                _Gender = 1;
+                _gender = 1;
             }
             else
             {
-                _Gender = 2;
+                _gender = 2;
             }
 
 
             if (rdbFormulaHarris.IsChecked == true)
             {
-                _Result = CalculationClass.Calculation_BMR_Harris(_Weight, _Age, _Growth, _Gender);
+                _result = CalculationClass.CalculationBMRHarris(_weight, _age, _growth, _gender);
             }
 
             if (rdbFormulaMaffin.IsChecked == true)
             {
-                _Result = CalculationClass.Calculation_BMR_Maffin(_Weight, _Age, _Growth, _Gender);
+                _result = CalculationClass.CalculationBMRMaffin(_weight, _age, _growth, _gender);
             }
 
-
-
-            if (cmbLevel.SelectedIndex == 1)
+            switch (cmbLevel.SelectedIndex)
             {
-                _Result = _Result * 1.2;
-            }
+                case 1:
+                    _result = _result * 1.2;
+                    break;
 
-            if (cmbLevel.SelectedIndex == 2)
-            {
-                _Result = _Result * 1.375;
-            }
+                case 2:
+                    _result = _result * 1.375;
+                    break;
 
-            if (cmbLevel.SelectedIndex == 3)
-            {
-                _Result = _Result * 1.4625;
-            }
+                case 3:
+                    _result = _result * 1.4625;
+                    break;
 
-            if (cmbLevel.SelectedIndex == 4)
-            {
-                _Result = _Result * 1.550;
-            }
+                case 4:
+                    _result = _result * 1.550;
+                    break;
 
-            if (cmbLevel.SelectedIndex == 5)
-            {
-                _Result = _Result * 1.6375;
-            }
+                case 5:
+                    _result = _result * 1.6375;
+                    break;
 
-            if (cmbLevel.SelectedIndex == 6)
-            {
-                _Result = _Result * 1.725;
-            }
+                case 6:
+                    _result = _result * 1.725;
+                    break;
 
-            if (cmbLevel.SelectedIndex == 7)
-            {
-                _Result = _Result * 1.9;
+                case 7:
+                    _result = _result * 1.9;
+                    break;
             }
 
             if (rdbResultDjoul.IsChecked == true)
             {
-                _Result = _Result * 4.184;
-                _Joul = 1;
+                _result = _result * 4.184;
+                _joul = 1;
             }
             else
             {
-                _Joul = 0;
+                _joul = 0;
             }
 
 
-            OutputWin outputWin = new OutputWin(_Result, _Joul);
+            OutputWin outputWin = new OutputWin(_result, _joul);
             this.Hide();
             outputWin.ShowDialog();
             this.Show();
@@ -123,7 +118,15 @@ namespace BMICalc
                 && Convert.ToDouble(boxWeight.Text) > 0 && Convert.ToDouble(boxWeight.Text) < 1000
                 && Convert.ToDouble(boxGrowth.Text) > 0 && Convert.ToDouble(boxGrowth.Text) < 1000)
             {
-                Calculation_Bmr();
+                CalculationBmr();
+            }
+            else
+            {
+                _errorcount++;
+                if (_errorcount % 10 == 0)
+                {
+                    MessageBox.Show("Попробуйте ввести корректные значения", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
@@ -198,8 +201,17 @@ namespace BMICalc
                     && Convert.ToDouble(boxWeight.Text) > 0 && Convert.ToDouble(boxWeight.Text) < 1000
                     && Convert.ToDouble(boxGrowth.Text) > 0 && Convert.ToDouble(boxGrowth.Text) < 1000)
                 {
-                    Calculation_Bmr();
+                    CalculationBmr();
                 }
+                else
+                {
+                    _errorcount++;
+                    if (_errorcount % 10 == 0)
+                    {
+                        MessageBox.Show("Попробуйте ввести корректные значения", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+
             }
 
             if (e.Key == Key.Escape)

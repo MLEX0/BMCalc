@@ -82,7 +82,7 @@
                 Grid.Column="1"
                 Grid.Row="2"
                 Margin="18 18 18 18"
-                Content="Меню" 
+                Content="Назад" 
                 Click="btnMenu_Click"
             />
         

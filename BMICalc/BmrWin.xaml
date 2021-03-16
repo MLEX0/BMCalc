@@ -245,7 +245,7 @@
                 Grid.Column="1"
                 Grid.Row="9"
                 Margin="10 10 100 10"
-                Content="Меню"
+                Content="Назад"
                 Click="btnMenu_Click"
             />
 

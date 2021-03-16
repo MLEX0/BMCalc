@@ -9,39 +9,39 @@ namespace BMICalc
     public static class CalculationClass
     {
 
-        public static double Calculation_BMR_Harris(double _Weight, double _Age, double _Growth, int _Gender)
+        public static double CalculationBMRHarris(double weight, int age, double growth, int gender)
         {
             double _Result;
 
-            if (_Gender == 1)
+            if (gender == 1)
             {
-                _Result = 66.5 + (13.75 * _Weight) + (5.003 * _Growth) - (6.775 * _Age);
+                _Result = 66.5 + (13.75 * weight) + (5.003 * growth) - (6.775 * age);
 
                 return _Result;
             }
             else
             {
-                _Result = 665.1 + (9.563 * _Weight) + (1.85 * _Growth) - (4.676 * _Age);
+                _Result = 665.1 + (9.563 * weight) + (1.85 * growth) - (4.676 * age);
 
                 return _Result;
             }
         }
 
-        public static double Calculation_BMR_Maffin(double _Weight, double _Age, double _Growth, int _Gender)
+        public static double CalculationBMRMaffin(double weight, int age, double growth, int gender)
         {
-            double _Result;
+            double result;
 
-            if (_Gender == 1)
+            if (gender == 1)
             {
-                _Result = (10.00 * _Weight) + (6.25 * _Growth) - (5 * _Age) + 5;
+                result = (10.00 * weight) + (6.25 * growth) - (5 * age) + 5;
 
-                return _Result;
+                return result;
             }
             else
             {
-                _Result = (10.00 * _Weight) + (6.25 * _Growth) - (5 * _Age) - 161;
+                result = (10.00 * weight) + (6.25 * growth) - (5 * age) - 161;
 
-                return _Result;
+                return result;
             }
         }
 
